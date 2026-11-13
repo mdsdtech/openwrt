@@ -37,6 +37,11 @@ linksys,mr5500)
 	ucidef_set_led_netdev "wan-port-link" "WAN-PORT-LINK" "90000.mdio-1:04:green:wan" "wan" "link_10 link_100 link_1000"
 	ucidef_set_led_netdev "wan-port-activity" "WAN-PORT-ACTIVITY" "90000.mdio-1:04:amber:wan" "wan" "tx rx"
 	;;
+linksys,fgw5500)
+	ucidef_set_led_netdev "wan" "WAN" "green:status" "wan" "link tx rx"
+	ucidef_set_led_netdev "wlan2g" "WLAN2G" "green:wlan" "phy0-ap0" "link tx rx"
+	ucidef_set_led_netdev "wlan5g" "WLAN5G" "blue:wlan" "phy1-ap0" "link tx rx"
+	;;
 mercusys,mr80x-v2)
 	ucidef_set_led_netdev "wan" "WAN" "green:wan" "wan" "tx rx link"
 	ucidef_set_led_netdev "lan1" "LAN1" "green:lan-1" "lan1" "tx rx link"

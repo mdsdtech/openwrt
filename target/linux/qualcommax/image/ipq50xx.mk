@@ -228,6 +228,31 @@ define Device/iodata_wn-dax3000gr
 endef
 TARGET_DEVICES += iodata_wn-dax3000gr
 
+define Device/linksys_fgw5500
+	$(call Device/FitImage)
+	DEVICE_VENDOR := Linksys
+	DEVICE_MODEL := FGW5500
+	DEVICE_DTS_CONFIG := config@mp03.6-c1
+	SOC := ipq5018
+	KERNEL_IN_UBI := 1
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+	SUBPAGESIZE := 2048
+	VID_HDR_OFFSET := 2048
+	NAND_SIZE := 512m
+	IMAGE_SIZE := 409856k
+	IMAGES := factory.img sysupgrade.bin
+	IMAGE/factory.img := append-ubi | check-size
+	DEVICE_PACKAGES := ath11k-firmware-ipq5018 \
+		kmod-ath11k-pci \
+		ath11k-firmware-qcn9074 \
+		kmod-mhi-pci-generic \
+		kmod-mhi-wwan-ctrl \
+		kmod-mhi-wwan-mbim \
+		umbim
+endef
+TARGET_DEVICES += linksys_fgw5500
+
 define Device/linksys_ipq50xx_mx_base
 	$(call Device/FitImageLzma)
 	DEVICE_VENDOR := Linksys

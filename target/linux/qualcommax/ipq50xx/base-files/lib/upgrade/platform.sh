@@ -83,7 +83,7 @@ linksys_bootconfig_set_primaryboot() {
 		echo "failed to toggle primaryboot on 0:HLOS part"
 		return 1
 	}
-	
+
 	set_bootconfig_primaryboot "$tempfile" "rootfs" $2
 	[ $? -ne 0 ] && {
 		echo "failed to toggle primaryboot for rootfs part"
@@ -227,6 +227,11 @@ platform_do_upgrade() {
 		remove_oem_ubi_volume ubi_rootfs
 		remove_oem_ubi_volume wifi_fw
 		glinet_do_upgrade "$1"
+		;;
+	linksys,fgw5500)
+		CI_UBIPART="rootfs"
+		remove_oem_ubi_volume rootfs_data
+		nand_do_upgrade "$1"
 		;;
 	linksys,mr2000|\
 	linksys,mr5500|\

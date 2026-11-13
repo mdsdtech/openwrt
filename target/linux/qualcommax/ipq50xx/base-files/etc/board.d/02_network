@@ -22,6 +22,9 @@ ipq50xx_setup_interfaces()
 	glinet,gl-x2000)
 		ucidef_set_interfaces_lan_wan "lan" "wan"
 		;;
+	linksys,fgw5500)
+		ucidef_set_interfaces_lan_wan "lan1 lan2" "wan"
+		;;
 	avm,fritzbox-4050|\
 	cmcc,mr3000d-ci|\
 	cmcc,rax3000q|\
